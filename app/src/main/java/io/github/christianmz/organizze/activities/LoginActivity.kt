@@ -1,17 +1,17 @@
-package io.github.christianmz.organizze.intro
+package io.github.christianmz.organizze.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import io.github.christianmz.organizze.R
-import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.activity_login.*
 
-class RegisterActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+        setContentView(R.layout.activity_login)
 
-        setSupportActionBar(toolbar_register)
+        setSupportActionBar(toolbar_login)
         supportActionBar?.title = ""
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }

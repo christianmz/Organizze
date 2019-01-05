@@ -1,4 +1,4 @@
-package io.github.christianmz.organizze.intro
+package io.github.christianmz.organizze.activities
 
 import android.os.Bundle
 import android.view.View
@@ -11,7 +11,6 @@ class OnBoardingActivity : IntroActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_onboarding)
 
         isButtonNextVisible = false
 
@@ -61,7 +60,7 @@ class OnBoardingActivity : IntroActivity() {
     }
 
     fun goToRegister(view: View) {
-        startActivity<RegisterActivity>()
+        startActivity<SignUpActivity>()
         overridePendingTransition(
             android.R.anim.fade_in, android.R.anim.fade_out
         )
