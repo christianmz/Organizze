@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">Organizze</string>
+    <string name="app_name" translatable="false">Organizze</string>
+    <string name="onboarding_one_title">Organizze sus gastos,\ndondequiera que esté</string>
+    <string name="onboarding_one_subtitle">Simple, gratis y fácil de usar</string>
+    <string name="onboarding_two_title">Averigüe a dónde\nva su dinero</string>
+    <string name="onboarding_two_subtitle">Categorice sus gastos y descubra\nel destino de cada centavo</string>
+    <string name="onboarding_three_title">Nunca olvide pagar una\ncuenta de nuevo</string>
+    <string name="onboarding_three_subtitle">Le recordamos cuándo debe pargar\nsus cuentas, y nunca se retrasará\nen ningún pago</string>
+    <string name="onboarding_four_title">Todo alrededor de su vida</string>
+    <string name="onboarding_four_subtitle">Utilice la aplicación en su teléfono,\n inteligente u ordenador, dondequiera\nque esté</string>
+    <string name="skip">Skip</string>
+    <string name="register">Registre su cuenta gratis</string>
+    <string name="join">Únase a más de un millón de personas\ny comience de inmediato</string>
+    <string name="sign_up">Registro</string>
+    <string name="i_have_account">Ya tengo una cuenta</string>
+    <string name="terms">Términos de servicio</string>
+    <string name="password">Contraseña</string>
+    <string name="email">Correo electrónico</string>
+    <string name="name">Nombre</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="forget_password">Olvidé mi contraseña</string>
+    <string name="enter">Entrar</string>
 </resources>
