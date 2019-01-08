@@ -29,4 +29,6 @@
     <string name="weak_password">Contraseña muy débil</string>
     <string name="invalid_email">E-mail invalido</string>
     <string name="sign_out">Cerrar sesión</string>
+    <string name="not_found_user">Usuario no registrado</string>
+    <string name="wrong_password">Contraseña incorrecta</string>
 </resources>
