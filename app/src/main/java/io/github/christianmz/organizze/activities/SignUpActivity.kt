@@ -2,13 +2,9 @@ package io.github.christianmz.organizze.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import io.github.christianmz.organizze.R
-import io.github.christianmz.organizze.commons.ConfigFirebase
 import io.github.christianmz.organizze.commons.isValidEmail
 import io.github.christianmz.organizze.commons.isValidPassword
 import io.github.christianmz.organizze.commons.messageRealTime
