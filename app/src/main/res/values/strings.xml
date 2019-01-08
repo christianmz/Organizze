@@ -20,4 +20,13 @@
     <string name="login">Iniciar sesión</string>
     <string name="forget_password">Olvidé mi contraseña</string>
     <string name="enter">Entrar</string>
+    <string name="email_already_exists">Ya existe una cuenta asociada a este correo electrónico</string>
+    <string name="error">Ocurrió un error inesperado, intente nuevamente</string>
+    <string name="please_add_email">Por favor ingrese un email</string>
+    <string name="please_add_password">Por favor ingrese una contraseña</string>
+    <string name="check_your_info">Por favor verifique que sus datos sean correctos</string>
+    <string name="please_add_name">Por favor ingrese su nombre</string>
+    <string name="weak_password">Contraseña muy débil</string>
+    <string name="invalid_email">E-mail invalido</string>
+    <string name="sign_out">Cerrar sesión</string>
 </resources>

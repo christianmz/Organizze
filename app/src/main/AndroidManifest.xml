@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="io.github.christianmz.organizze">
 
     <application
@@ -8,28 +9,41 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme">
-        <activity android:name=".activities.HomeActivity">
-        </activity>
+            android:theme="@style/AppTheme"
+            tools:ignore="GoogleAppIndexingWarning"
+            android:fullBackupContent="@xml/backup_descriptor">
         <activity
-                android:name=".activities.OnBoardingActivity"
-                android:theme="@style/Theme.Intro">
+                android:name=".commons.MainEmpty"
+                android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activities.SignUpActivity"
+
+        <activity android:name=".activities.HomeActivity">
+        </activity>
+
+        <activity
+                android:name=".activities.OnBoardingActivity"
+                android:theme="@style/Theme.Intro">
+        </activity>
+
+        <activity
+                android:name=".activities.SignUpActivity"
                 android:parentActivityName=".activities.OnBoardingActivity">
         </activity>
-        <activity android:name=".activities.LoginActivity"
-                  android:parentActivityName=".activities.OnBoardingActivity">
+
+        <activity
+                android:name=".activities.LoginActivity"
+                android:parentActivityName=".activities.OnBoardingActivity">
         </activity>
 
         <meta-data
                 android:name="preloaded_fonts"
                 android:resource="@array/preloaded_fonts"/>
+
     </application>
 
 </manifest>
