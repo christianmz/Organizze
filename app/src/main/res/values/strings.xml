@@ -31,4 +31,6 @@
     <string name="sign_out">Cerrar sesión</string>
     <string name="not_found_user">Usuario no registrado</string>
     <string name="wrong_password">Contraseña incorrecta</string>
+    <string name="incomes">Ingresos</string>
+    <string name="expense">Gastos</string>
 </resources>

@@ -2,18 +2,41 @@
 <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:fab="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activities.HomeActivity">
 
-    <Button
-            android:text="@string/sign_out"
+    <com.github.clans.fab.FloatingActionMenu
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:menu_colorNormal="@color/color_accent"
+            app:menu_colorPressed="@color/color_accent"
+            fab:menu_icon="@drawable/ic_add">
+
+        <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_expenses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add"
+                fab:fab_colorNormal="@color/color_primary_expense"
+                fab:fab_label="@string/expense"
+                fab:fab_size="mini"/>
+
+        <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_incomes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add"
+                fab:fab_colorNormal="@color/color_primary_dark_income"
+                fab:fab_label="@string/incomes"
+                fab:fab_size="mini"/>
+
+    </com.github.clans.fab.FloatingActionMenu>
+
 </android.support.constraint.ConstraintLayout>
