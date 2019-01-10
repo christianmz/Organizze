@@ -20,20 +20,16 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity android:name=".activities.HomeActivity">
         </activity>
-
         <activity
                 android:name=".activities.OnBoardingActivity"
                 android:theme="@style/Theme.Intro">
         </activity>
-
         <activity
                 android:name=".activities.SignUpActivity"
                 android:parentActivityName=".activities.OnBoardingActivity">
         </activity>
-
         <activity
                 android:name=".activities.LoginActivity"
                 android:parentActivityName=".activities.OnBoardingActivity">
@@ -43,6 +39,12 @@
                 android:name="preloaded_fonts"
                 android:resource="@array/preloaded_fonts"/>
 
+        <activity android:name=".activities.IncomeActivity"
+                android:theme="@style/IncomeTheme">
+        </activity>
+        <activity android:name=".activities.ExpenseActivity"
+                android:theme="@style/ExpenseTheme">
+        </activity>
     </application>
 
 </manifest>

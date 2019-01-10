@@ -1,11 +1,25 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="colorAccent">@color/color_accent</item>
+    </style>
+
+    <style name="IncomeTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/color_primary_income</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark_income</item>
+        <item name="colorAccent">@color/color_primary_income</item>
+    </style>
+
+    <style name="ExpenseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/color_primary_expense</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark_expense</item>
+        <item name="colorAccent">@color/color_primary_expense</item>
     </style>
 
 </resources>
