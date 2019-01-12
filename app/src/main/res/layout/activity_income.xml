@@ -56,7 +56,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/Date"
-                android:id="@+id/et_data_incomes"/>
+                android:id="@+id/et_date_incomes"
+                android:fontFamily="@font/nunito_sans_semibold"
+                android:inputType="date"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -72,7 +74,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/category"
-                android:id="@+id/et_category_incomes"/>
+                android:id="@+id/et_category_incomes"
+                android:fontFamily="@font/nunito_sans_semibold"
+                android:inputType="textCapWords"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -87,7 +91,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/description"
-                android:id="@+id/et_description_incomes"/>
+                android:id="@+id/et_description_incomes"
+                android:fontFamily="@font/nunito_sans_semibold"
+                android:inputType="textCapSentences"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.FloatingActionButton
@@ -95,7 +101,7 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             app:srcCompat="@drawable/ic_check"
-            android:id="@+id/fab_incomes"
+            android:id="@+id/fab_check_incomes"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="32dp"
             app:layout_constraintStart_toStartOf="parent"

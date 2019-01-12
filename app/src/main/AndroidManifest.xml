@@ -35,16 +35,16 @@
                 android:parentActivityName=".activities.OnBoardingActivity">
         </activity>
 
-        <meta-data
-                android:name="preloaded_fonts"
-                android:resource="@array/preloaded_fonts"/>
-
         <activity android:name=".activities.IncomeActivity"
                 android:theme="@style/IncomeTheme">
         </activity>
         <activity android:name=".activities.ExpenseActivity"
                 android:theme="@style/ExpenseTheme">
         </activity>
+
+        <meta-data
+                android:name="preloaded_fonts"
+                android:resource="@array/preloaded_fonts"/>
     </application>
 
 </manifest>

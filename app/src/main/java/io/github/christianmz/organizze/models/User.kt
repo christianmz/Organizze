@@ -1,22 +1,22 @@
 package io.github.christianmz.organizze.models
 
 import com.google.firebase.database.Exclude
-import com.google.firebase.database.FirebaseDatabase
+import io.github.christianmz.organizze.commons.NODE_USERS
+import io.github.christianmz.organizze.commons.mDatabaseRef
 
 data class User(
     @get:Exclude var id: String = "",
     var name: String = "",
     var email: String = "",
-    @get:Exclude var password: String = ""
+    @get:Exclude var password: String = "",
+    var incomesTotal: Double = 0.0,
+    var expensesTotal: Double = 0.0
 ) {
 
-    companion object {
-        private const val FIRST_NODE = "users"
-    }
-
-    private val firebaseDatabase = FirebaseDatabase.getInstance().reference
-
     fun saveUser() {
-        firebaseDatabase.child(FIRST_NODE).child(this.id).setValue(this)
+        mDatabaseRef
+            .child(NODE_USERS)
+            .child(this.id)
+            .setValue(this)
     }
 }

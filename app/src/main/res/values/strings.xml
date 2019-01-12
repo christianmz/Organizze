@@ -37,4 +37,8 @@
     <string name="category">Categoria</string>
     <string name="description">Descripción</string>
     <string name="zeros">$ 0,00</string>
+    <string name="add_value">Por favor agrege una cantidad de dinero</string>
+    <string name="add_date">Por favor añada una fecha</string>
+    <string name="add_category">Por favor añada una categoria</string>
+    <string name="add_description">Por favor añada una descripción</string>
 </resources>

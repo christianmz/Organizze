@@ -8,14 +8,13 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import io.github.christianmz.organizze.R
 import io.github.christianmz.organizze.commons.isValidEmail
 import io.github.christianmz.organizze.commons.isValidPassword
+import io.github.christianmz.organizze.commons.mAuth
 import io.github.christianmz.organizze.commons.messageRealTime
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.*
 import java.lang.Exception
 
 class LoginActivity : AppCompatActivity() {
-
-    private val mAuth by lazy { FirebaseAuth.getInstance() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -2,14 +2,9 @@ package io.github.christianmz.organizze.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import com.google.firebase.database.FirebaseDatabase
 import io.github.christianmz.organizze.R
-import io.github.christianmz.organizze.commons.isValidEmail
-import io.github.christianmz.organizze.commons.isValidPassword
-import io.github.christianmz.organizze.commons.messageRealTime
-import io.github.christianmz.organizze.helpers.Base64Custom
+import io.github.christianmz.organizze.commons.*
 import io.github.christianmz.organizze.models.User
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import org.jetbrains.anko.*
@@ -17,7 +12,6 @@ import java.lang.Exception
 
 class SignUpActivity : AppCompatActivity() {
 
-    private val mAuth by lazy { FirebaseAuth.getInstance() }
     private val name by lazy { et_name_sign_up.text.toString() }
     private val email by lazy { et_email_sign_up.text.toString() }
     private val password by lazy { et_password_sign_up.text.toString() }
@@ -40,7 +34,7 @@ class SignUpActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { it ->
                 if (it.isSuccessful) {
 
-                    val id = Base64Custom.encode(user.email)
+                    val id = encodeBase64(user.email)
                     user.id = id
                     user.saveUser()
 
