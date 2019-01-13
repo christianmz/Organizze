@@ -20,7 +20,6 @@ class IncomeActivity : AppCompatActivity() {
 
     private val databaseRef = mDatabaseRef.child(NODE_USERS).child(encryptedEmail())
     private var totalIncomes: Double? = null
-    private lateinit var transaction: Transaction
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +51,7 @@ class IncomeActivity : AppCompatActivity() {
 
     private fun saveIncome() {
 
-        transaction = Transaction(value.toDouble(), date, category, description, INCOME)
+        val transaction = Transaction(value.toDouble(), date, category, description, INCOME)
 
         totalIncomes?.let {
             val updateIncomes = value.toDouble() + it

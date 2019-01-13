@@ -20,7 +20,6 @@ class ExpenseActivity : AppCompatActivity() {
 
     private val databaseRef = mDatabaseRef.child(NODE_USERS).child(encryptedEmail())
     private var totalExpense: Double? = null
-    private lateinit var transaction: Transaction
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +51,7 @@ class ExpenseActivity : AppCompatActivity() {
 
     private fun saveExpense() {
 
-        transaction = Transaction(value.toDouble(), date, category, description, EXPENSE)
+        val transaction = Transaction(value.toDouble(), date, category, description, EXPENSE)
 
         totalExpense?.let {
             val updateExpenses = value.toDouble() + it

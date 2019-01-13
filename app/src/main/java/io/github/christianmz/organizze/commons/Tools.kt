@@ -30,6 +30,7 @@ const val INCOME = "income"
 const val EXPENSE = "expense"
 const val INCOME_TOTAL = "incomesTotal"
 const val EXPENSE_TOTAL = "expensesTotal"
+const val NAME = "name"
 
 
 /** Functions **/

@@ -41,4 +41,7 @@
     <string name="add_date">Por favor añada una fecha</string>
     <string name="add_category">Por favor añada una categoria</string>
     <string name="add_description">Por favor añada una descripción</string>
+    <string name="balances_total">Saldo Total</string>
+    <string name="greeting">Hola!,</string>
+    <string name="exit">Salir</string>
 </resources>
