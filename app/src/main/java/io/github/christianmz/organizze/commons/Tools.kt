@@ -5,6 +5,9 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Base64
 import android.util.Patterns
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -30,7 +33,6 @@ const val INCOME = "income"
 const val EXPENSE = "expense"
 const val INCOME_TOTAL = "incomesTotal"
 const val EXPENSE_TOTAL = "expensesTotal"
-const val NAME = "name"
 
 
 /** Functions **/
@@ -39,6 +41,8 @@ fun isValidEmail(email: String): Boolean = Patterns.EMAIL_ADDRESS.matcher(email)
 
 fun isValidPassword(password: String): Boolean = Pattern.compile("(?=\\S+$).{6,}$").matcher(password).matches()
 
+fun ViewGroup.inflate(layoutID: Int): View = LayoutInflater.from(context).inflate(layoutID, this, false)
+
 fun encodeBase64(text: String) = Base64.encodeToString(text.toByteArray(), Base64.DEFAULT).replace("(\\n|\\r)".toRegex(), "")
 
 fun decodeBase64(textCoded: String) = String(Base64.decode(textCoded, Base64.DEFAULT))
@@ -46,15 +50,12 @@ fun decodeBase64(textCoded: String) = String(Base64.decode(textCoded, Base64.DEF
 fun currentDate(): String = SimpleDateFormat("dd/MM/yyyy", Locale.ROOT).format(System.currentTimeMillis())
 
 fun monthYearChosen(date: String): String {
-
     val dateChosen = date.split("/")
     return "${dateChosen[1]}${dateChosen[2]}"
 }
 
 fun encryptedEmail(): String {
-
     val emailUser = mAuth.currentUser?.email
-
     return Base64.encodeToString(emailUser?.toByteArray(), Base64.DEFAULT).replace("(\\n|\\r)".toRegex(), "")
 }
 
