@@ -33,15 +33,11 @@ class SignUpActivity : AppCompatActivity() {
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { it ->
                 if (it.isSuccessful) {
-
                     val id = encodeBase64(user.email)
                     user.id = id
                     user.saveUser()
-
                     startActivity(intentFor<HomeActivity>().newTask().clearTask())
-
                 } else {
-
                     try {
                         throw it.exception!!
                     } catch (e: FirebaseAuthUserCollisionException) {
@@ -57,10 +53,8 @@ class SignUpActivity : AppCompatActivity() {
     private fun verifyCredentials() {
 
         if (isValidEmail(email) && isValidPassword(password)) {
-
             user = User(name = name, email = email, password = password)
             createUser(email, password)
-
         } else {
             when {
                 name.isEmpty() -> longToast(R.string.please_add_name)

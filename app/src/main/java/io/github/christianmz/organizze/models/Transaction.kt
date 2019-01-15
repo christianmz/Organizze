@@ -11,9 +11,7 @@ data class Transaction(
 ) {
 
     fun saveTransaction(chosenDate: String) {
-
         val date = monthYearChosen(chosenDate)
-
         mDatabaseRef.child(NODE_TRANSACTIONS)
             .child(encryptedEmail())
             .child(date)

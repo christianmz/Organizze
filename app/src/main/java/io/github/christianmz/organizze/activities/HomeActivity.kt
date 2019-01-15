@@ -95,9 +95,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setRecycler() {
-
         val layoutManager = LinearLayoutManager(this)
-
         recycler.setHasFixedSize(true)
         recycler.layoutManager = layoutManager
         recycler.adapter = adapter
@@ -108,12 +106,10 @@ class HomeActivity : AppCompatActivity() {
         valueEventListenerUser = dbRefUser.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-
                 val user = dataSnapshot.getValue(User::class.java)
                 incomes = user?.incomesTotal
                 expenses = user?.expensesTotal
                 balance = expenses?.let { incomes?.minus(it) }
-
                 tv_greeting.text = "Hello, ${user?.name}"
                 tv_balance.text = "$ ${balance?.toInt()}"
             }

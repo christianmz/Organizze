@@ -45,8 +45,6 @@ fun ViewGroup.inflate(layoutID: Int): View = LayoutInflater.from(context).inflat
 
 fun encodeBase64(text: String) = Base64.encodeToString(text.toByteArray(), Base64.DEFAULT).replace("(\\n|\\r)".toRegex(), "")
 
-fun decodeBase64(textCoded: String) = String(Base64.decode(textCoded, Base64.DEFAULT))
-
 fun currentDate(): String = SimpleDateFormat("dd/MM/yyyy", Locale.ROOT).format(System.currentTimeMillis())
 
 fun monthYearChosen(date: String): String {

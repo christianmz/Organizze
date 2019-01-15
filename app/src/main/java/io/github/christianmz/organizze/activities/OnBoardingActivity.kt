@@ -13,34 +13,26 @@ class OnBoardingActivity : IntroActivity() {
         super.onCreate(savedInstanceState)
 
         isButtonNextVisible = false
+        setOnboarding()
+    }
 
-        addSlide(
-            FragmentSlide.Builder()
-                .background(android.R.color.white)
-                .fragment(R.layout.onboarding_one)
-                .build()
+    private fun setOnboarding() {
+
+        val layoutList = intArrayOf(
+            R.layout.onboarding_one,
+            R.layout.onboarding_two,
+            R.layout.onboarding_three,
+            R.layout.onboarding_four
         )
 
-        addSlide(
-            FragmentSlide.Builder()
-                .background(android.R.color.white)
-                .fragment(R.layout.onboarding_two)
-                .build()
-        )
-
-        addSlide(
-            FragmentSlide.Builder()
-                .background(android.R.color.white)
-                .fragment(R.layout.onboarding_three)
-                .build()
-        )
-
-        addSlide(
-            FragmentSlide.Builder()
-                .background(android.R.color.white)
-                .fragment(R.layout.onboarding_four)
-                .build()
-        )
+        for (layout in layoutList) {
+            addSlide(
+                FragmentSlide.Builder()
+                    .background(android.R.color.white)
+                    .fragment(layout)
+                    .build()
+            )
+        }
 
         addSlide(
             FragmentSlide.Builder()
@@ -49,7 +41,6 @@ class OnBoardingActivity : IntroActivity() {
                 .canGoForward(false)
                 .build()
         )
-
     }
 
     fun goToLogin(view: View) {
