@@ -44,4 +44,7 @@
     <string name="balances_total">Saldo Total</string>
     <string name="greeting">Hola!,</string>
     <string name="exit">Salir</string>
+    <string name="delete_transaction">¿Está seguro que desea borrar este moviemiento?</string>
+    <string name="yes">Si</string>
+    <string name="cancel">Cancelar</string>
 </resources>

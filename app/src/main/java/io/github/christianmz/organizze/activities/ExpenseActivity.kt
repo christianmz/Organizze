@@ -18,7 +18,7 @@ class ExpenseActivity : AppCompatActivity() {
     private val category by lazy { et_category_expense.text.toString() }
     private val description by lazy { et_description_expense.text.toString() }
 
-    private val databaseRef = mDatabaseRef.child(NODE_USERS).child(encryptedEmail())
+    private val dbRefUser = mDatabaseRef.child(NODE_USERS).child(encryptedEmail())
     private var totalExpense: Double? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +37,7 @@ class ExpenseActivity : AppCompatActivity() {
 
     private fun recoverExpenses() {
 
-        databaseRef.addValueEventListener(object : ValueEventListener {
+        dbRefUser.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val user = dataSnapshot.getValue(User::class.java)
@@ -52,12 +52,10 @@ class ExpenseActivity : AppCompatActivity() {
     private fun saveExpense() {
 
         val transaction = Transaction(value.toDouble(), date, category, description, EXPENSE)
-
         totalExpense?.let {
             val updateExpenses = value.toDouble() + it
-            databaseRef.child(EXPENSE_TOTAL).setValue(updateExpenses)
+            dbRefUser.child(EXPENSE_TOTAL).setValue(updateExpenses)
         }
-
         transaction.saveTransaction(date)
         finish()
     }

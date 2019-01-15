@@ -18,7 +18,7 @@ class IncomeActivity : AppCompatActivity() {
     private val category by lazy { et_category_incomes.text.toString() }
     private val description by lazy { et_description_incomes.text.toString() }
 
-    private val databaseRef = mDatabaseRef.child(NODE_USERS).child(encryptedEmail())
+    private val dbRefUser = mDatabaseRef.child(NODE_USERS).child(encryptedEmail())
     private var totalIncomes: Double? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +37,7 @@ class IncomeActivity : AppCompatActivity() {
 
     private fun recoverIncomes() {
 
-        databaseRef.addValueEventListener(object : ValueEventListener {
+        dbRefUser.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val user = dataSnapshot.getValue(User::class.java)
@@ -52,12 +52,10 @@ class IncomeActivity : AppCompatActivity() {
     private fun saveIncome() {
 
         val transaction = Transaction(value.toDouble(), date, category, description, INCOME)
-
         totalIncomes?.let {
             val updateIncomes = value.toDouble() + it
-            databaseRef.child(INCOME_TOTAL).setValue(updateIncomes)
+            dbRefUser.child(INCOME_TOTAL).setValue(updateIncomes)
         }
-
         transaction.saveTransaction(date)
         finish()
     }

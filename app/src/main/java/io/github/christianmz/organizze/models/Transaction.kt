@@ -7,7 +7,8 @@ data class Transaction(
     val date: String = "",
     val category: String = "",
     val description: String = "",
-    val type: String = ""
+    val type: String = "",
+    var key: String? = null
 ) {
 
     fun saveTransaction(chosenDate: String) {

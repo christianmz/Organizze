@@ -1,9 +1,11 @@
 package io.github.christianmz.organizze.activities
 
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.database.DataSnapshot
@@ -27,6 +29,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var valueEventListenerTransaction: ValueEventListener
     private lateinit var monthYear: String
 
+    private lateinit var transaction: Transaction
     private val transactions = ArrayList<Transaction>()
     private val dbRefUser = mDatabaseRef.child(NODE_USERS).child(encryptedEmail())
     private val dbRefTransaction = mDatabaseRef.child(NODE_TRANSACTIONS).child(encryptedEmail())
@@ -43,6 +46,7 @@ class HomeActivity : AppCompatActivity() {
 
         setCalendar()
         setRecycler()
+        setSwipe()
 
         fab_incomes.setOnClickListener { startActivity<IncomeActivity>() }
         fab_expenses.setOnClickListener { startActivity<ExpenseActivity>() }
@@ -84,20 +88,19 @@ class HomeActivity : AppCompatActivity() {
             "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
         )
 
-        monthYear = "${String.format("%02d", currentDate.month+1)}${currentDate.year}"
+        monthYear = "${String.format("%02d", currentDate.month + 1)}${currentDate.year}"
         calendar_view.setTitleMonths(months)
 
         calendar_view.setOnMonthChangedListener { _, date ->
-            monthYear = "${String.format("%02d", date.month+1)}${date.year}"
+            monthYear = "${String.format("%02d", date.month + 1)}${date.year}"
             dbRefTransaction.removeEventListener(valueEventListenerTransaction)
             setTransactions()
         }
     }
 
     private fun setRecycler() {
-        val layoutManager = LinearLayoutManager(this)
         recycler.setHasFixedSize(true)
-        recycler.layoutManager = layoutManager
+        recycler.layoutManager = LinearLayoutManager(this)
         recycler.adapter = adapter
     }
 
@@ -128,6 +131,7 @@ class HomeActivity : AppCompatActivity() {
                     transactions.clear()
                     for (data in dataSnapshot.children) {
                         val transaction = data.getValue(Transaction::class.java)
+                        transaction?.key = data.key
                         transaction?.let { transactions.add(it) }
                     }
                     adapter.notifyDataSetChanged()
@@ -136,5 +140,57 @@ class HomeActivity : AppCompatActivity() {
                 override fun onCancelled(databaseError: DatabaseError) {
                 }
             })
+    }
+
+    private fun setSwipe() {
+
+        val itemTouch = object : ItemTouchHelper.Callback() {
+
+            override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
+                val dragFlags = ItemTouchHelper.ACTION_STATE_IDLE
+                val swipeFlags = ItemTouchHelper.START or ItemTouchHelper.END
+                return makeMovementFlags(dragFlags, swipeFlags)
+            }
+
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ) = false
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) = deleteTransaction(viewHolder)
+        }
+        ItemTouchHelper(itemTouch).attachToRecyclerView(recycler)
+    }
+
+    private fun deleteTransaction(viewHolder: RecyclerView.ViewHolder) {
+
+        AlertDialog
+            .Builder(this)
+            .setTitle(R.string.delete_transaction)
+            .setCancelable(false)
+            .setPositiveButton(R.string.yes) { _, _ ->
+                val position = viewHolder.adapterPosition
+                transaction = transactions[position]
+                transaction.key?.let { dbRefTransaction.child(monthYear).child(it).removeValue() }
+                adapter.notifyItemRemoved(position)
+                updateBalance()
+            }.setNegativeButton(R.string.cancel) { _, _ ->
+                adapter.notifyDataSetChanged()
+            }.create()
+            .show()
+    }
+
+    private fun updateBalance() {
+        when (transaction.type) {
+            INCOME -> {
+                incomes = incomes?.minus(transaction.value)
+                dbRefUser.child(INCOME_TOTAL).setValue(incomes)
+            }
+            EXPENSE -> {
+                expenses = expenses?.minus(transaction.value)
+                dbRefUser.child(EXPENSE_TOTAL).setValue(expenses)
+            }
+        }
     }
 }

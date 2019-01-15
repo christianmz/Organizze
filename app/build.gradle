@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
 
@@ -41,7 +39,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.6'
     implementation 'com.google.firebase:firebase-auth:16.1.0'
     implementation 'com.google.firebase:firebase-database:16.0.5'
-    
+
     implementation 'com.github.prolificinteractive:material-calendarview:1.4.3'
     implementation 'com.heinrichreimersoftware:material-intro:1.6'
     implementation 'org.jetbrains.anko:anko:0.10.8'
